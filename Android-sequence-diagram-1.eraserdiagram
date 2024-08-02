@@ -1,0 +1,47 @@
+sequence-diagram
+
+init [color gray]
+app_main [color: gray]
+AndroidRuntime [color: gray]
+ZygoteInit [color: green]
+ZygoteConnection [color: green]
+Zygote [color: green]
+SystemServer [color: #A76262]
+AppicationX [color: #349CA5]
+
+init > app_main: main
+
+activate app_main
+app_main > AndroidRuntime: start
+deactivate app_main
+
+activate AndroidRuntime
+AndroidRuntime > AndroidRuntime: 
+startVm
+AndroidRuntime > AndroidRuntime: startReg
+AndroidRuntime > ZygoteInit: main
+deactivate AndroidRuntime
+activate ZygoteInit
+ZygoteInit > ZygoteInit: socket
+ZygoteInit > ZygoteInit: preload
+ZygoteInit > ZygoteInit: startSystemServer
+opt {
+ZygoteInit > Zygote: forkSystemServer
+activate Zygote
+Zygote > SystemServer: main
+Zygote --> ZygoteInit: null
+deactivate Zygote
+} else {
+ZygoteInit > ZygoteInit: runSelectLoop
+ZygoteInit > ZygoteConnection: runOnce
+activate ZygoteConnection
+ZygoteConnection > Zygote: 
+forkAndSpecialize
+activate Zygote
+Zygote > AppicationX: main
+Zygote --> ZygoteConnection: null
+deactivate Zygote
+ZygoteConnection --> ZygoteInit: null
+deactivate ZygoteConnection
+}
+deactivate ZygoteInit
