@@ -1,0 +1,52 @@
+sequence-diagram
+
+MobileLog [color: blue]
+AbsLog [color: blue]
+AbsConnection [color: blue]
+SocketConnection [color: blue]
+
+
+MobileLog > AbsLog: executeCommond
+activate AbsLog
+AbsLog > AbsConnection: sendToServer
+activate AbsConnection
+AbsConnection > SocketConnection: connect
+activate SocketConnection
+SocketConnection > Socket: connect
+activate Socket
+SocketConnection --> ListenThread: listen
+activate ListenThread
+ListenThread --> ReadThread: read
+deactivate ListenThread
+activate ReadThread
+ReadThread --> AbsConnection: setResponseFromServer
+deactivate ReadThread
+activate AbsConnection
+AbsConnection > AbsConnection: storeResult
+deactivate AbsConnection
+
+Socket > SocketConnection: success
+deactivate Socket
+SocketConnection > AbsConnection: success
+deactivate SocketConnection
+AbsConnection > SocketConnection: sendDataToServer
+activate SocketConnection
+SocketConnection > Socket: write
+activate Socket
+Socket > SocketConnection: success
+deactivate Socket
+SocketConnection > AbsConnection: success
+deactivate SocketConnection
+AbsConnection > AbsLog: sucess
+deactivate AbsConnection
+
+
+loop [label: until success]{
+AbsLog > AbsConnection: getResponseFromServer
+activate AbsConnection
+AbsConnection > AbsConnection: checkResult
+AbsConnection > AbsLog: success
+deactivate AbsConnection
+}
+AbsLog > MobileLog: success
+deactivate AbsLog

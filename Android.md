@@ -7,6 +7,7 @@
 ## Diagrams
 <!-- eraser-additional-files -->
 <a href="/Android-sequence-diagram-1.eraserdiagram" data-element-id="q0Nvebj6pPLqMQXA6lIU4"><img src="/.eraser/F0WRlo1IARuLgnUTEZmB___c9jd2ukkF6Xc22fefcy8KFSxy0s2___---diagram----fb67613fe404c0cdfe1e2adb6c8cd98f.png" alt="" data-element-id="q0Nvebj6pPLqMQXA6lIU4" /></a>
+<a href="/Android-sequence-diagram-2.eraserdiagram" data-element-id="FJhDf44W6u7XWxQe7BCRx"><img src="/.eraser/F0WRlo1IARuLgnUTEZmB___c9jd2ukkF6Xc22fefcy8KFSxy0s2___---diagram----1ef50df1d050ddbe34de80bd054489a5.png" alt="" data-element-id="FJhDf44W6u7XWxQe7BCRx" /></a>
 <!-- end-eraser-additional-files -->
 <!-- end-eraser-additional-content -->
 <!--- Eraser file: https://app.eraser.io/workspace/F0WRlo1IARuLgnUTEZmB --->
